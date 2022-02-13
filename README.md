@@ -15,14 +15,14 @@ COMP208 group project
   + tool: Anaconda
 ---
 # How to
-Befor star this project you need to do follow things
+Befor start this project you need to do follow things
 1. Conda:
-   + Switch to the Web path
+   + Switch to the project root path
 ```cmd
 conda create -f envirnoment.yml
 ```
 2. Pip:
-    + Switch to the Web path
+    + Switch to the project root path
 ```cmd
 pip install -r requirements.txt
 ```
