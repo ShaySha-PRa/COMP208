@@ -91,3 +91,92 @@ Present: Yujing Chen, Junshu Sha
   + Covide-19
     + Medical supplies
     + Medical number
+
+---
+---
+
+# Group Meeting_3 (Sun. 13/02/2022)
+
+Web Design:
+
+· Welcome drop-down function to view recent news or select direction to jump to
+
+Functions: 1) Four sections for donor groups
+
+2) news
+
+
+
+· Make a global home page
+
+Functions: 1) Search engine forum function registration login
+
+2) You can select a new direction after the Welcome screen
+
+3) News module: can jump to the web page
+
+4) Barrier-free reading (function)
+
++ BBS,
+
+· Do you need help? (For a summary of frequently asked questions, click the link to jump to)
+
+· Achievement Presentation (function) : what donors/donees/public welfare organizations need to know
+
+· Blog (function) : Share interesting news with an official account
+
+
+
+Front desk function problem: Too few function modules
+
+
+
+Target audience: people who donate, people who are willing to donate, people who want to donate but are not sure how to do so
+
+Public welfare organization A public welfare organization partner
+
+
+
+Backstage function
+
+Search function: algorithm
+
+Improve the search system: optimize the algorithm through feedback
+
+Maintain the forum database and issue the user's speaking permission
+
+Background frequently asked questions are summarized
+
+Background user information collection: n Records user information in the database
+
+Background administrator to establish a database for website modification
+
+Blog: Manage the official account to publish
+
+Payment issues: third-party security systems for collection
+
+
+
+Web components:
+
+AI: Type a word and predict the next word
+
+Accessible reading
+
+Search engine
+---
++ Web design:
+  + Welcome()
+  + Index()
+  + News()
+  + blog
+  + FAQs,(Do you need help?)
+  + 404
+  + 500
+  + reset account
+
++ Componet
+  + Searching enigne
+  + turn the page function
+  + payment
+  + database
