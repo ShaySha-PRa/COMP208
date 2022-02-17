@@ -12,13 +12,6 @@
 # Outline
 
 1. Introduction(aim)
-2. Framework
-3. Function
-4. Evaluation & Testing
-5. UI & Initial demo
-6. Risk evaluation
-7. Source & Reference
-
 2. Aims & Objectives:
 3. Key Literature & Background Reading
 4. Development & Implementation Summary
