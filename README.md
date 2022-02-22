@@ -97,6 +97,8 @@ Present: Yujing Chen, Junshu Sha
 
 # Group Meeting_3 (Sun. 13/02/2022)
 
+Present: Qi Wu, Zaichao Zheng, Ruoqian Zhang, Yujing Chen, Yuan Zhao, Junshu Sha
+
 Web Design:
 
 · Welcome drop-down function to view recent news or select direction to jump to
@@ -164,6 +166,7 @@ AI: Type a word and predict the next word
 Accessible reading
 
 Search engine
+
 ---
 + Web design:
   + Welcome()
@@ -180,3 +183,23 @@ Search engine
   + turn the page function
   + payment
   + database
+
+---
+# Group Meeting_4 (Thu. 17/02/2022)
+Present: Qi Wu, Zaichao Zheng, Ruoqian Zhang, Yujing Chen, Yuan Zhao, Junshu Sha
+
+Solve the remaining problems of parts 6, 7, and 8
+
+How to get data: see mind map
+
+Data protection method: see mind map
+
+Data's licensing method: digital certificate for unique authentication
+
+ 
+
+the third part 
+
+Overall goal: to build the website into a platform for information collection, people can more conveniently obtain charity information and carry out charity activities, we will have relative testing plans
+
+Final effect: convenient connection, lower cost of information integration, how many registered users, how many daily active DAUs and how many monthly active users
