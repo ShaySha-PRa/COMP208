@@ -1,0 +1,182 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block title %}
+Face recognize
+{% endblock %}
+
+{% block content %}
+<link href="{% static 'css/news.css' %}" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/codemirror.css' %}">
+<script src="{% static 'js/codemirror.js' %}"></script>
+<script src="{% static 'js/python.js' %}"></script>
+<style type="text/css">
+    .CodeMirror {
+        border-top: 1px solid black;
+        border-bottom: 1px solid black;
+    }
+</style>
+<!-- 广告横幅 -->
+<div class="container-fluid">
+    <div class="row">
+        <img class="img-responsive model-img" src="{% static 'img/service.jpg' %}">
+    </div>
+</div>
+<!-- 主体内容 -->
+<div class="container">
+    <div class="row row-3">
+        <!-- side menu -->
+        <div class="col-md-3">
+            <div class="model-title">
+                Service support
+            </div>
+            <div class="model-list">
+                <ul class="list-group">
+                    <li class="list-group-item" id='download'>
+                        <a href="{% url 'serviceApp:download' %}">support download</a>
+                    </li>
+                    <li class="list-group-item" id='platform'>
+                        <a href="{% url 'serviceApp:platform' %}">Face recongize</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- 说明文字和图片 -->
+        <div class="col-md-9">
+            <div class="model-details-title">
+                Face recogize API
+            </div>
+            <div class="model-details">
+                <h3>I. Experience products</h3>
+                </br>
+                <!-- 按钮触发模态框 -->
+                <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+                    Face detection
+                </button>
+                <!-- 模态框（Modal） -->
+                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                    &times;
+                                </button>
+                                <h4 class="modal-title" id="myModalLabel">
+                                    Online face detection
+                                </h4>
+                            </div>
+                            <div class="modal-body">
+                                <img id="photoIn" src="{% static 'img/sample.png' %}" class="img-responsive"
+                                    style="max-width:250px">
+                                <input type="file" id="photo" name="photo" />
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">close
+                                </button>
+                                <button type="button" id="compute" class="btn btn-primary">
+                                    Starting test
+                                </button>
+                            </div>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal -->
+                </div>
+                <script>
+                    $(function () {
+                        $('#photo').on('change', function () {
+                            var r = new FileReader();
+                            f = document.getElementById('photo').files[0];
+                            r.readAsDataURL(f);
+                            r.onload = function (e) {
+                                document.getElementById('photoIn').src = this.result;
+                            };
+                        });
+                    });
+                </script>
+                <script>
+                    $('#compute').click(function () {
+                        formdata = new FormData();
+                        var file = $("#photo")[0].files[0];
+                        formdata.append("image", file);
+                        $.ajax({
+                            url: '/serviceApp/facedetectDemo/', // 调用Django服务器计算函数
+                            type: 'POST', // 请求类型
+                            data: formdata,
+                            dataType: 'json', // 期望获得的响应类型为json
+                            processData: false,
+                            contentType: false,
+                            success: ShowResult // 在请求成功之后调用该回调函数输出结果
+                        })
+                    })
+                </script>
+                <script>
+                    function ShowResult(data) {
+                        var v = data['img64'];
+                        document.getElementById('photoIn').src = "data:image/jpeg;base64, " + v;
+                    }
+                </script>
+                <h3>2. API interface description</h3>
+                </br>
+                <h4><strong>Basic Information:</strong></h4>
+                <p>
+                    Request type: HTTP/HTTPS. Request mode: POST
+                </p>
+                <p>
+                    The interface address: http://myhengda.cn/serviceApp/facedetect/
+                </p>
+                </br>
+                <h4><strong>Interface description：</strong></h4>
+                <p>
+                    Face detection, this interface is used to call face recognition, face comparison before the interface, used to detect the face area from the image data, and to
+Rectangle box returns face detection results. Currently, this interface is only used for testing, and the number of times that you can invoke this interface is not limited.
+                </p>
+
+                </br>
+                <h4><strong>Local call example：</strong></h4>
+
+                <div><textarea id="code" name="code">
+    import cv2, requests
+    <!-- # web地址(http://localhost:8000)+访问接口（facedetect）
+    url = "http://localhost:8000/serviceApp/facedetect/"
+
+    # 上传图像并检测
+    tracker = None
+    imgPath = "face.jpg"  #图像路径
+    files = {
+        "image": ("filename2", open(imgPath, "rb"), "image/jpeg"),
+    }
+
+    req = requests.post(url, data=tracker, files=files).json()
+    print("获取信息: {}".format(req))
+
+    # 将检测结果框显示在图像上
+    img = cv2.imread(imgPath)
+    for (w, x, y, z) in req["faces"]:
+        cv2.rectangle(img, (w, x), (y, z), (0, 255, 0), 2)
+
+    cv2.imshow("face detection", img)
+    cv2.waitKey(0) -->
+                </textarea></div>
+                </br>
+                <h4><strong>The results：</strong></h4>
+                <img class="img-responsive" style="max-width:200px;" src="{% static 'img/facedetect.png' %}">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+        mode: {
+            name: "python",
+            version: 3,
+            singleLineStringErrors: false
+        },
+        lineNumbers: true,
+        indentUnit: 4,
+        tabMode: "shift",
+        matchBrackets: true
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,174 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>H2H|{% block title %}{% endblock %} </title>
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+</head>
+
+<body>
+    <!-- 头部 -->
+    <div class="container top">
+        <div class="row">
+            <div class="col-md-6">
+                <a>
+                    <img class="img-responsive" src="{% static 'img/logo.PNG' %}" width="75" height="75">
+                </a>
+            </div>
+            <div class="col-md-3 hidden-xs">
+                <a class="phone ant">
+                    <span class="glyphicon glyphicon-phone"></span>Phone：+44 xxxx xxx xxx &nbsp; &nbsp;
+                </a>
+            </div>
+            <div class="col-md-3 hidden-xs">
+                <a class="mail ant">
+                    <span class="glyphicon glyphicon-envelope"></span>Email： xxxxxxx@xxxxx.com
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- 导航条 -->
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example"
+                    aria-expanded="false">
+                    <span>Navigation bar</span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example">
+                <ul class="nav navbar-nav" style="width:100%;">
+                    <li class="nav-top">
+                        <a href="{% url 'home' %}">Home</a>
+                    </li>
+                    <li class="dropdown nav-top" id='about'>
+                        <a href="#" class="dropdown-toggle on" data-toggle="dropdown">
+                            About</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{% url 'aboutApp:survey' %}">About us</a></li>
+                            <li><a href="{% url 'aboutApp:honor' %}">Honor</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown nav-top" id='news'>
+                        <a href="#" class="dropdown-toggle on" data-toggle="dropdown">
+                            News</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{% url 'newsApp:news' 'company' %}">Progress</a></li>
+                            <li><a href="{% url 'newsApp:news' 'industry' %}">News</a></li>
+                            <li><a href="{% url 'newsApp:news' 'notice' %}">Public Release</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown nav-top" id='products'>
+                        <a href="#" class="dropdown-toggle on" data-toggle="dropdown">
+                            Help us</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{% url 'productsApp:products' 'child' %}">
+                                    Child</a></li>
+                            <li><a href="{% url 'productsApp:products' 'nature' %}">
+                                    Nature</a></li>
+                            <li><a href="{% url 'productsApp:products' 'covid' %}">
+                                    Covid</a></li>
+                            <li><a href="{% url 'productsApp:products' 'Peopel with disabilities' %}">
+                                    People with disabilities</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown nav-top">
+                        <a href="#" class="dropdown-toggle on" data-toggle="dropdown">
+                            Support</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{% url 'serviceApp:download' %}">
+                                    Information download</a></li>
+                            <li><a href="{% url 'serviceApp:platform' %}">
+                                    Face</a></li>
+                        </ul>
+                    </li>
+                  
+                    <li class="dropdown nav-top" id='employ'>
+                        <a href="#" class="dropdown-toggle on" data-toggle="dropdown">
+                            Join us</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{% url 'contactApp:contact' %}">Welcom to contact us</a></li>
+                            <li><a href="{% url 'contactApp:recruit' %}">Join us</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- 分割线 -->
+    <div class="line"></div>
+    {% block content %}
+    {% endblock %}
+    <!-- 页脚 -->
+    <div class="container web-footer">
+        <!-- 站点地图 -->
+        <div class="row" id="map-footer">
+            <div class="col-md-2">
+                <dl>
+                    <dt>About</dt>
+                    <dd><a href="{% url 'aboutApp:survey' %}">About us</a></dd>
+                    <dd><a href="{% url 'aboutApp:honor' %}">Honor</a></dd>
+                </dl>
+            </div>
+            <div class="col-md-2">
+                <dl>
+                    <dt>Help us</dt>
+                    <dd><a href="{% url 'productsApp:products' 'child' %}">Child</a></dd>
+                    <dd><a href="{% url 'productsApp:products' 'nature' %}">Nature</a></dd>
+                    <dd><a href="{% url 'productsApp:products' 'covid' %}">Covid</a></dd>
+                    <dd><a href="{% url 'productsApp:products' 'People with disabilitie' %}">People with disabilities</a></dd>
+                </dl>
+            </div>
+            <div class="col-md-2">
+                <dl>
+                    <dt>Support</dt>
+                    <dd><a href="{% url 'serviceApp:download' %}">Data download</a></dd>
+                    <dd><a href="{% url 'serviceApp:platform' %}">face</a></dd>
+                </dl>
+            </div>
+            <div class="col-md-2">
+                <dl>
+                    <dt>Join us</dt>
+                    <dd><a href="{% url 'contactApp:contact' %}">Welcome to contact us</a></dd>
+                    <dd><a href="{% url 'contactApp:recruit' %}">Join us</a></dd>
+                </dl>
+            </div>
+            <div class="col-md-4" id="wx">
+                <p>Scan follow us</p>
+                <img class="qrimg" src="{% static 'img/qr.jpg' %}" alt="wx">
+                <p>Phone：<b style="font-size:20px">+44 xxxx xxx xxx</b></p>
+            </div>
+        </div>
+        <!-- 版权 -->
+        <div class="row" id="patent-footer">
+            <p> © 2022 Python Web </p>
+        </div>
+    </div>
+
+    <script>
+        $(function () {
+            $(".dropdown").mouseover(function () {
+                $(this).addClass("open");
+            });
+            $(".dropdown").mouseleave(function () {
+                $(this).removeClass("open");
+            });
+        });
+    </script>
+    <script type="text/JavaScript">
+        $('#{{active_menu}}').addClass("active");
+    </script>
+    <script type="text/JavaScript">
+        $('#{{sub_menu}}').addClass("active");
+     </script>
+</body>
+
+</html>

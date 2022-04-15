@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block title %}
+Theme detail
+{% endblock %}
+
+{% block content %}
+<link href="{% static 'css/products.css' %}" rel="stylesheet">
+<!-- 主体内容 -->
+<div class="container">
+    <div class="model-details-product-title">
+        {{product.title}}
+    </div>
+    <div class="model-details">
+        {% for img in product.productImgs.all %}
+        <div class="row-4">
+            <img class="img-responsive" src="{{img.photo.url}}">
+        </div>
+        {% endfor %}
+        <h3>Theme introduction</h3>
+        <p>
+            {{product.description|linebreaks}}
+        <!-- </p>
+        <h3></h3>
+        <p>
+            {{product.price}}
+        </p> -->
+    </div>
+</div>
+{% endblock %}
