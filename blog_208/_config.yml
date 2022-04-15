@@ -3,11 +3,11 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
-subtitle: ''
+title: Blog's Name
+subtitle: 'We make a better world! '
 description: ''
 keywords:
-author: John Doe
+author: Shay Sha
 language: en
 timezone: ''
 
@@ -103,3 +103,22 @@ theme: lx
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: ''
+
+jsonContent:
+   meta: false
+   pages: false
+   posts:
+     title: true
+     date: true
+     path: true
+     text: false
+     raw: false
+     content: false
+     slug: false
+     updated: false
+     comments: true
+     link: false
+     permalink: false
+     excerpt: false
+     categories: true
+     tags: true
